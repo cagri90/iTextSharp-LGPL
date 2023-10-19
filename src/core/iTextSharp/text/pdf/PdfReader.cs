@@ -73,7 +73,7 @@ namespace iTextSharp.text.pdf {
         static PdfName[] pageInhCandidates = {
             PdfName.MEDIABOX, PdfName.ROTATE, PdfName.RESOURCES, PdfName.CROPBOX
         };
-
+        public static bool UnethicalReading { get; set; }
         static byte[] endstream = PdfEncodings.ConvertToBytes("endstream", null);
         static byte[] endobj = PdfEncodings.ConvertToBytes("endobj", null);
         protected internal PRTokeniser tokens;
@@ -3438,7 +3438,7 @@ namespace iTextSharp.text.pdf {
         */
         public bool IsOpenedWithFullPermissions {
             get {
-                return !encrypted || ownerPasswordUsed;
+                return !encrypted || ownerPasswordUsed || UnethicalReading ;
             }
         } 
 
